@@ -57,7 +57,5 @@ No known bugs
 - cloudinary
 ## Contacts
 Email: pascalouma54@gmail.com.com
-
-
 &#169; 2022 Pascal Owilly
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
