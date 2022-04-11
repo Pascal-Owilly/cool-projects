@@ -23,6 +23,7 @@ import cloudinary
 import cloudinary.uploader
 import cloudinary.api
 from whitenoise import WhiteNoise
+import cloudinary_storage
 
 
 
