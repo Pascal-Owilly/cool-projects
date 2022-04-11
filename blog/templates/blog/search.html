@@ -1,12 +1,12 @@
 {%extends 'blog/base.html'%} 
 {% block content %}
-<div class="container">
+<div class="container" style="color: white;">
 
   <div class="row">
     {% if articles%}
-      <h2>Found {{ articles|length }} of searched term {{message}}</h2>
+      <h4 style="color: white;">Found {{ articles|length }} of searched term {{message}}</h4>
     {% else %}
-      <h2> Found 0 articles for the search term {{message}}</h2>
+      <h4> Found 0 articles for the search term {{message}}</h4>
     {% endif %}
 
   </div>
@@ -16,7 +16,7 @@
   {% if articles %}
     {% for article in articles %}
       <div class="col-sm-6 col-md-3">
-          <h1>{{article.title}}</h1>
+          <h4>{{article.title}}</h4>
       </div>
     {% endfor %}
   {% endif %}
