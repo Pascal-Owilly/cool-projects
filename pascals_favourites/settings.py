@@ -16,6 +16,15 @@ from pathlib import Path
 # Import to serve staticfiles correctly
 import os
 
+import dj_database_url
+from decouple import config, Csv
+import django_heroku
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+from whitenoise import WhiteNoise
+
+
 
 
 
@@ -52,8 +61,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # 'cloudinary_storage',
-    # 'cloudinary',
+    'cloudinary_storage',
+    'cloudinary',
     'media',
     'star_ratings',
 ]
@@ -175,3 +184,9 @@ STAR_RATINGS_OBJECT_ID_PATTERN = '[a-z0-9]{32}'
 
 import django_heroku
 django_heroku.settings(locals())
+
+cloudinary.config( 
+  cloud_name = "djangophotogallery", 
+  api_key = "548131285592445", 
+  api_secret = "SczRiN6BcjPK9ygi78jmXmsrjeI" 
+)
