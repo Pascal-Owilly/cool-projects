@@ -1,3 +1,4 @@
+from email.policy import default
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
@@ -19,7 +20,7 @@ class Post(models.Model):
     content = models.TextField()
     date_posted = models.DateTimeField(default=timezone.now)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    image = models.ImageField(upload_to='pics')
+    image = models.ImageField(upload_to='pics', default='')
     link = models.URLField(max_length=200, blank=True, default='provide a Link to your cute repo')
 
     def __str__(self):
