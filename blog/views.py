@@ -12,9 +12,9 @@ from .models import Post
 
 from . models import Review 
 from . forms import ReviewForm
+from django.views.decorators.csrf import csrf_exempt
 
-
-
+@csrf_exempt
 def home(request):
     posts = Post.objects.all()
     context = {
