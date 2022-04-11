@@ -1,0 +1,126 @@
+{% extends "blog/base.html" %}
+{% block content %}
+    {% for post in posts %}
+    
+    <div class="container-fluid mt-4">
+      <div class="row">
+        <div class="col-8">
+          <div class="card" style="background-color: #efefef;">
+            <div class="card-title">
+              <img style="width: 45px;height: 45px;" class="rounded-circle article-img" src="{{ post.author.profile.image.url }}">
+              <a class="mr-2" href="{% url 'user-posts' post.author.username %}">{{ post.author }}</a>
+            </div>
+            <div class="card-header">
+            
+              <h4><a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h4>
+           
+            </div>
+            <div class="card-body">
+              <img  style="object-fit: cover;width: 100%;" src=" {{ post.image.url }} " class="article-content img-responsive">
+            
+              <p class="article-content">{{ post.content }}</p>
+            </div>
+            <div class="card-footer">
+            <p><small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
+             <p> <a href="{{ post.link }}" class="article-content">Visit Site</p></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <h4 class="text-center text-muted text"> Rate</h3>
+            <ul class="rating">
+              <li>Design</li>
+              <span class="star-rating d-flex py-2 text-white text-muted">
+                <input class="text-muted" type="radio" name="rating" value="1">1<i></i>
+                <input class="text-muted" type="radio" name="raring" value="2">2<i></i>
+                <input class="text-muted" type="radio" name="rating" value="3">3<i></i>
+                <input class="text-muted" type="radio" name="rating" value="4">4<i></i>
+                <input class="text-muted" type="radio" name="rating" value="5">5<i></i>
+                <input class="text-muted" type="radio" name="rating" value="6">6<i></i>
+                <input class="text-muted" type="radio" name="rating" value="7">7<i></i>
+                <input class="text-muted" type="radio" name="rating" value="8">8<i></i>
+                <input class="text-muted" type="radio" name="rating" value="9">9<i></i>
+                <input class="text-muted" type="radio" name="rating" value="10">10<i></i>
+              </span>
+
+
+              <li>Usability</li>
+              <span class="star-rating d-flex py-2 text-white text-muted">
+                <input type="radio" name="rating2" value="1">1<i></i>
+                <input type="radio" name="rating2" value="2">2<i></i>
+                <input type="radio" name="rating2" value="3">3<i></i>
+                <input type="radio" name="rating2" value="4">4<i></i>
+                <input type="radio" name="rating2" value="5">5<i></i>
+                <input type="radio" name="rating2" value="6">6<i></i>
+                <input type="radio" name="rating2" value="7">7<i></i>
+                <input type="radio" name="rating2" value="8">8<i></i>
+                <input type="radio" name="rating2" value="9">9<i></i>
+                <input type="radio" name="rating2" value="10">10<i></i>
+              </span>
+              <li>Creativity</li>
+              <span class="star-rating d-flex py-2 text-white text-muted">
+                <input type="radio" name="rating3" value="1">1<i></i>
+                <input type="radio" name="rating3" value="2">2<i></i>
+                <input type="radio" name="rating3" value="3">3<i></i>
+                <input type="radio" name="rating3" value="4">4<i></i>
+                <input type="radio" name="rating3" value="5">5<i></i>
+                <input type="radio" name="rating3" value="6">6<i></i>
+                <input type="radio" name="rating3" value="7">7<i></i>
+                <input type="radio" name="rating3" value="8">8<i></i>
+                <input type="radio" name="rating3" value="9">9<i></i>
+                <input type="radio" name="rating3" value="10">10<i></i>
+              </span>
+              <li>Content</li>
+              <span class="star-rating d-flex py-2 text-white text-muted">
+                <input type="radio" name="rating4" value="1">1<i></i>
+                <input type="radio" name="rating4" value="2">2<i></i>
+                <input type="radio" name="rating4" value="3">3<i></i>
+                <input type="radio" name="rating4" value="4">4<i></i>
+                <input type="radio" name="rating4" value="5">5<i></i>
+                <input type="radio" name="rating4" value="6">6<i></i>
+                <input type="radio" name="rating4" value="7">7<i></i>
+                <input type="radio" name="rating4" value="8">8<i></i>
+                <input type="radio" name="rating4" value="9">9<i></i>
+                <input type="radio" name="rating4" value="10">10<i></i>
+              </span>
+            </ul>
+
+         
+
+            <form action="">
+              <input class="p-2  btn-inline" type="text" name="rating" placeholder="Leave a review" id="">
+              <input class="btn btn-submit btn-inline" type="submit" value="Submit"></input>
+            </form>
+            
+        </div>
+        
+      </div>
+      </div>
+       
+
+    {% endfor %}
+
+    
+    {% if is_paginated %}
+
+    {% if page_obj.has_previous %}
+      <a class="btn btn-outline-info mb-4" href="?page=1">First</a>
+      <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+    {% endif %}
+
+    {% for num in page_obj.paginator.page_range %}
+      {% if page_obj.number == num %}
+        <a class="btn btn-info mb-4" href="?page={{ num }}">{{ num }}</a>
+      {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+        <a class="btn btn-outline-info mb-4" href="?page={{ num }}">{{ num }}</a>
+      {% endif %}
+    {% endfor %}
+
+    {% if page_obj.has_next %}
+      <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.next_page_number }}">Next</a>
+      <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+    {% endif %}
+
+  {% endif %}
+
+{% endblock content %}
