@@ -29,6 +29,11 @@ class Post(models.Model):
     def get_absolute_url(self):
         return reverse('post-detail', kwargs={'pk': self.pk})
 
+    @classmethod
+    def search_by_title(cls,search_term):
+        news = cls.objects.filter(title__icontains=search_term)
+        return news
+
 class Review(models.Model):
     author = models.CharField(max_length=40, default="anonymous")
     review_date = models.DateTimeField(default=timezone.now)
