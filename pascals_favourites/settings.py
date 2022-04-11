@@ -38,6 +38,8 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
+CSRF_TRUSTED_ORIGINS = ['https://coolprojectscollection.herokuapp.com']
+
 # Application definition
 
 INSTALLED_APPS = [
