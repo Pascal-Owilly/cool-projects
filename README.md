@@ -20,6 +20,7 @@ These are the behaviours/features that the application implements for use by a u
 * Search for projects
 * Add projects and their descriptions and links
 * The can delete various posts
+
 ## Behaviour Driven Development
 | Behaviour | Input | Output |
 | :---------------- | :---------------: | ------------------: |
