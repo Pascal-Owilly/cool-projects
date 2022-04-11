@@ -5,7 +5,6 @@ This python-Django application was created on the 9/04/2022
  ## Author
  By **[Pascal Owilly](https://github.com/Pascal-Owilly)**
 
-
 ## Description
 This is a python Application where users can see various projects by bloggers and are able add their own projects for rating and review. 
 For user to use the application they have to register
