@@ -55,7 +55,6 @@ No known bugs
 - Bootstrap
 - GitHub
 - cloudinary
-
 ## Contacts
 Email: pascalouma54@gmail.com.com
 
